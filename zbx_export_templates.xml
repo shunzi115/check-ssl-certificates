@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>3.0</version>
-    <date>2018-02-08T12:21:11Z</date>
+    <date>2018-09-07T04:55:23Z</date>
     <groups>
         <group>
             <name>Certificate</name>
@@ -9,8 +9,8 @@
     </groups>
     <templates>
         <template>
-            <template>Certificate</template>
-            <name>Certificate</name>
+            <template>Template App SSL Certificate</template>
+            <name>Template App SSL Certificate</name>
             <description/>
             <groups>
                 <group>
@@ -25,18 +25,18 @@
             <items>
                 <item>
                     <name>certificate expiration time</name>
-                    <type>10</type>
+                    <type>0</type>
                     <snmp_community/>
                     <multiplier>0</multiplier>
                     <snmp_oid/>
-                    <key>CertExpiry.py[&quot;-c&quot;,&quot;{HOST.HOST}&quot;]</key>
+                    <key>ssl.certificates[&quot;www.github.com&quot;]</key>
                     <delay>18000</delay>
-                    <history>90</history>
+                    <history>7</history>
                     <trends>365</trends>
                     <status>0</status>
                     <value_type>3</value_type>
                     <allowed_hosts/>
-                    <units/>
+                    <units>s</units>
                     <delta>0</delta>
                     <snmpv3_contextname/>
                     <snmpv3_securityname/>
@@ -75,7 +75,7 @@
     </templates>
     <triggers>
         <trigger>
-            <expression>{Certificate:CertExpiry.py[&quot;-c&quot;,&quot;{HOST.HOST}&quot;].last()}&lt;2592000</expression>
+            <expression>{Template App SSL Certificate:ssl.certificates[&quot;www.github.com&quot;].last()}&lt;2592000</expression>
             <name>Certificate expires in less than 30 days on {HOST.NAME}</name>
             <url/>
             <status>0</status>
